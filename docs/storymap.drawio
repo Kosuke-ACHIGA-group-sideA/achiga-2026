@@ -1,0 +1,79 @@
+<mxfile host="65bd71144e">
+    <diagram id="Hxb66XbosOTXXYkzUYac" name="ページ-1">
+        <mxGraphModel dx="2447" dy="719" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="予算計算アプリ" vertex="1">
+                    <mxGeometry height="30" width="60" x="230" y="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="使える金額を決める" vertex="1">
+                    <mxGeometry height="60" width="120" x="-750" y="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="オーバーしてもいい金額を決める(＋500円など)" vertex="1">
+                    <mxGeometry height="60" width="120" x="-435" y="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="今月の使用額を表示する" vertex="1">
+                    <mxGeometry height="60" width="120" x="-570" y="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="日付を保存する" vertex="1">
+                    <mxGeometry height="60" width="120" x="230" y="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="□現金モードとクレカモード" vertex="1">
+                    <mxGeometry height="60" width="120" x="50" y="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="排出率の期待値" vertex="1">
+                    <mxGeometry height="60" width="120" x="30" y="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="□ジャンル選択(課金なのかグッズなのか）" vertex="1">
+                    <mxGeometry height="60" width="120" x="210" y="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="今月の収入あるいは貯金を入力" vertex="1">
+                    <mxGeometry height="60" width="120" x="-300" y="450" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="□交通費欄の追加" vertex="1">
+                    <mxGeometry height="60" width="120" x="380" y="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="□入場費欄の追加" vertex="1">
+                    <mxGeometry height="60" width="120" x="550" y="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="クレカモードに上限額入力欄を作る" vertex="1">
+                    <mxGeometry height="60" width="120" x="400" y="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="クレジット会社の入力欄" vertex="1">
+                    <mxGeometry height="60" width="120" x="570" y="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="交通手段の追加" vertex="1">
+                    <mxGeometry height="60" width="120" x="720" y="420" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="□予備費欄の追加（現金モードのみ）" vertex="1">
+                    <mxGeometry height="60" width="120" x="-130" y="430" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="オーバー額に応じて注意、警戒、危険、考え直し" vertex="1">
+                    <mxGeometry height="60" width="120" x="710" y="270" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="1円でも安いサイトを探す" vertex="1">
+                    <mxGeometry height="60" width="120" x="50" y="510" as="geometry"/>
+                </mxCell>
+                <mxCell id="CJmgFqFZrYQDObxY7fGt-20" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="中古の可否" vertex="1">
+                    <mxGeometry height="60" width="120" x="220" y="510" as="geometry"/>
+                </mxCell>
+                <mxCell id="_FDGVWEBB5HJzzkArKZm-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="今月分の準備" vertex="1">
+                    <mxGeometry height="60" width="120" x="-360" y="290" as="geometry"/>
+                </mxCell>
+                <mxCell id="_FDGVWEBB5HJzzkArKZm-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#f8cecc;strokeColor=#b85450;" value="買い物を検討する" vertex="1">
+                    <mxGeometry height="60" width="120" x="80" y="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="_FDGVWEBB5HJzzkArKZm-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#f8cecc;strokeColor=#b85450;" value="準備&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+                    <mxGeometry height="60" width="120" x="-380" y="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="LTZ1hjInrLFENvfQuPS9-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="□トップページを開く" vertex="1">
+                    <mxGeometry height="60" width="120" x="-890" y="440" as="geometry"/>
+                </mxCell>
+                <mxCell id="i3vvWHQ6YrIdfaCAnhIx-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;roundedPerimeter=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="□現在の時刻追加" vertex="1">
+                    <mxGeometry height="60" width="120" x="-250" y="520" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

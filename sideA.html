@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>予算計算アプリ</title>
+<link rel="stylesheet" href="Reservation.css">
+</head>
+<body>
+<h1>予算計算</h1>
+<div id="current-time"></div>
+<div class="payment-mode-selector">
+<button type="button"data-mode="credit">クレカモード</button>
+<button type="button"data-mode="cash">現金モード</button>
+</div> 
+<div id="credit-only-area" style="display:none;">
+    <label for="credit-limit">クレカ上限額(円):</label>
+    <input type="number" id="credit-limit" placeholder="0">
+</div>    
+<div class="genre-selector">
+    <label for="genre">ジャンル</label>
+    <select id="genre" name="genre">
+        <option value="">--選択してください--</option>
+        <option value="goods">グッズ</option>
+        <option value="gacha">課金</option>
+    </select>
+    </div>
+<div class="base-amount">
+    <label for="main-cost">基本金額(円):</label>
+    <input type="number" id="main-cost" placeholder="0">
+</div>
+<div id="cash-only-area" style="display:none;">
+    <label for="reserve-cost">予備費(円):</label>
+    <input type="number" id="reserve-cost" placeholder="0">
+</div>
+<div class="add-field-buttons">
+    <button type="button" id="add-transport-btn">+交通費欄を追加</button>
+    <button type="button" id="add-admission-btn">+入場費欄追加</button>
+    </div>
+    <div id="extra-fields"></div>
+<script>
+const extraFields = document.getElementById('extra-fields');
+const addTransportBtn = document.getElementById('add-transport-btn');
+const addAdmissionBtn=document.getElementById('add-admission-btn');
+addTransportBtn.addEventListener('click',() =>{
+    if(!document.getElementById('transport-cost')){
+        const div = document.createElement('div');
+        div.innerHTML = '<label for="transport-cost">交通費(円):</label><input type="number" id="transport-cost" placeholder="0">'; 
+        extraFields.appendChild(div);  
+    }
+});
+addAdmissionBtn.addEventListener('click',() =>{
+    if (!document.getElementById('admission-cost')){
+       const div = document.createElement('div');
+       div.innerHTML='<label for="admission-cost">入場費(円):</label><input type="number" id="admission-cost" placeholder="0">'; 
+       extraFields.appendChild(div);
+    }
+});
+const modeButtons = document.querySelectorAll('.payment-mode-selector button');
+const cashOnlyArea =document.getElementById('cash-only-area');
+const reserveInput =document.getElementById('reserve-cost');
+
+modeButtons.forEach(button =>{
+    button.addEventListener('click',()=>{
+    modeButtons.forEach(btn=>btn.classList.remove('active'));
+    button.classList.add('active');
+    
+    const selectedMode = button.getAttribute('data-mode');
+    if(selectedMode ==='cash'){
+        cashOnlyArea.style.display='block';
+    }else{
+        cashOnlyArea.style.display='none';
+        reserveInput.value='';
+    }
+    });
+});
+const cerditOnlyArea = document.getElementById('credit-only-area');
+const creditLimitInput = document.getElementById('credit-limit');
+
+modeButtons.forEach(button=>{
+    button.addEventListener('click',()=>{
+        modeButtons.forEach(btn=>btn.classList.remove('active'));
+        button.classList.add('active');
+        const selectedMode = button.getAttribute('data-mode');
+        
+    })
+})
+function updateClock(){
+    const now = new Date();
+    document.getElementById('current-time').textContent = now.toLocaleString('ja-JP');
+    }
+    updateClock();
+    setInterval(updateClock,1000);
+</script>         
+</body>
+</html>
