@@ -1,0 +1,3 @@
+git add .
+git commit -m '何月何日の進捗状況'
+git push

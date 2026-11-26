@@ -8,35 +8,51 @@
 <body>
 <h1>予算計算</h1>
 <div id="current-time"></div>
+<div class="monthly-total-box">
+    <p>今月の累計使用額:<span id="monthly-total">0</span>円</p>
+    <button type="button" id="reset-total-btn">累計をリセット</button>
+</div>
 <div class="payment-mode-selector">
 <button type="button"data-mode="credit">クレカモード</button>
 <button type="button"data-mode="cash">現金モード</button>
-</div> 
+</div>
 <div id="credit-only-area" style="display:none;">
-    <label for="credit-limit">クレカ上限額(円):</label>
-    <input type="number" id="credit-limit" placeholder="0">
-</div>    
+    <label for="credit-limit">クレカ上限額(円)</label>
+    <input type="number" id="credit-limit"placeholder="0">
+</div>
 <div class="genre-selector">
     <label for="genre">ジャンル</label>
     <select id="genre" name="genre">
         <option value="">--選択してください--</option>
         <option value="goods">グッズ</option>
         <option value="gacha">課金</option>
-    </select>
+    </select>                
     </div>
 <div class="base-amount">
     <label for="main-cost">基本金額(円):</label>
     <input type="number" id="main-cost" placeholder="0">
 </div>
-<div id="cash-only-area" style="display:none;">
+<div id="cash-only-area"style="display:none;">
+    <div class="cash-budget-group">
+        <label for="cash-budget">今月使える金額(円):</label>
+        <input type="number" id="cash-budget" placeholder="0">
+        <p class="remaining-text">あと使える金額:<span id="cash-remaining">0</span>円</p>
+    </div>
+    <hr>
+    <div class="reserve-group">
     <label for="reserve-cost">予備費(円):</label>
     <input type="number" id="reserve-cost" placeholder="0">
+</div>
 </div>
 <div class="add-field-buttons">
     <button type="button" id="add-transport-btn">+交通費欄を追加</button>
     <button type="button" id="add-admission-btn">+入場費欄追加</button>
     </div>
     <div id="extra-fields"></div>
+<div class="calculate-area">
+    <button type="button" id="calculate-btn">計算して今月の累計に追加</button>
+    <p id="result-message"></p>
+</div>        
 <script>
 const extraFields = document.getElementById('extra-fields');
 const addTransportBtn = document.getElementById('add-transport-btn');
@@ -59,21 +75,7 @@ const modeButtons = document.querySelectorAll('.payment-mode-selector button');
 const cashOnlyArea =document.getElementById('cash-only-area');
 const reserveInput =document.getElementById('reserve-cost');
 
-modeButtons.forEach(button =>{
-    button.addEventListener('click',()=>{
-    modeButtons.forEach(btn=>btn.classList.remove('active'));
-    button.classList.add('active');
-    
-    const selectedMode = button.getAttribute('data-mode');
-    if(selectedMode ==='cash'){
-        cashOnlyArea.style.display='block';
-    }else{
-        cashOnlyArea.style.display='none';
-        reserveInput.value='';
-    }
-    });
-});
-const cerditOnlyArea = document.getElementById('credit-only-area');
+const creditOnlyArea = document.getElementById('credit-only-area');
 const creditLimitInput = document.getElementById('credit-limit');
 
 modeButtons.forEach(button=>{
@@ -81,15 +83,101 @@ modeButtons.forEach(button=>{
         modeButtons.forEach(btn=>btn.classList.remove('active'));
         button.classList.add('active');
         const selectedMode = button.getAttribute('data-mode');
-        
+    if (selectedMode ==='cash'){
+        cashOnlyArea.style.display='block';
+        creditOnlyArea.style.display='none';
+        creditLimitInput.value='';
+    }else{
+        creditOnlyArea.style.display='block';
+        cashOnlyArea.style.display='none';
+        reserveInput.value='';
+    }    
     })
 })
+const monthlyTotalSpan = document.getElementById('monthly-total');
+const calculateBtn = document.getElementById('calculate-btn');
+const resetTotalBtn = document.getElementById('reset-total-btn');
+const resultMessage = document.getElementById('result-message');
+
+const nowForMonth =new Date();
+const currentYearMonth=`${nowForMonth.getFullYear()}-${nowForMonth.getMonth()+1}`;
+
+let savedMonth = localStorage.getItem('savedMonth');
+let monthlyTotal = Number(localStorage.getItem('monthlyTotal'))||0;
+
+if(savedMonth !== currentYearMonth){
+    monthlyTotal=0;
+    localStorage.setItem('savedMonth',currentYearMonth);
+    localStorage.setItem('monthlyTotal',0);
+}
+monthlyTotalSpan.textContent=monthlyTotal.toLocaleString();
+
+calculateBtn.addEventListener('click',() =>{
+    const mainCost=Number(document.getElementById('main-cost').value);
+    const reserveCost=Number(document.getElementById('reserve-cost').value)||0;
+    const transportEl=document.getElementById('transport-cost');
+    const admissionEl=document.getElementById('admission-cost');
+    const transportCost=transportEl?(Number(transportEl.value)||0):0;
+    const admissionCost=admissionEl?(Number(admissionEl.value)||0):0;
+    const currentTotal=mainCost+reserveCost+transportCost+admissionCost;
+    monthlyTotal += currentTotal;
+    localStorage.setItem('monthlyTotal',monthlyTotal);
+    monthlyTotalSpan.textContent=monthlyTotal.toLocaleString();
+    resultMessage.textContent=`今回の合計：${currentTotal.toLocaleString()}円を累計に追加しました!`;
+const creditLimit = Number(creditLimitInput.value)||0;
+resultMessage.style.color='black';
+resultMessage.style.fontWeight='normal';
+if(creditLimit>0&&monthlyTotal>creditLimit){
+    const overAmount=monthlyTotal-creditLimit;
+    resultMessage.style.fontWeight='bold';
+    if(overAmount<=3000){
+        resultMessage.style.color='#d97706';
+        resultMessage.textContent+=`⚠️[注意]上限を${overAmount.toLocaleString()}円オーバーしてます。`;        
+    }else if(overAmount<=10000){
+        resultMessage.style.color='#ea580c';
+        resultMessage.textContent +=`◆[警戒]上限を${overAmount.toLocaleString()}円オーバー！少し控えましょう。`;
+    }else if(overAmount<=30000){
+        resultMessage.style.color='#dc2626';
+        resultMessage.textContent+=`🚨[危険]上限を${overAmount.toLocaleString()}円オーバー！使いすぎの可能性がある。`;
+    }else{
+        resultMessage.style.color='#991b1b';
+        resultMessage.textContent+=`🧊[考え直し]上限を${overAmount.toLocaleString()}円オーバー！考え直しを推奨します。`;
+    }
+}
+});
+resetTotalBtn.addEventListener('click',()=>{
+    if(confirm('今月の累計使用額を0円にしますか？')){
+        monthlyTotal=0;
+        localStorage.setItem('monthlyTotal',0);
+        monthlyTotalSpan.textContent='0';
+        resultMessage.style.color='black';
+        resultMessage.style.fontWeight='normal';
+        resultMessage.textContent='累計をリセットしました。';
+    }
+});
 function updateClock(){
     const now = new Date();
     document.getElementById('current-time').textContent = now.toLocaleString('ja-JP');
     }
     updateClock();
     setInterval(updateClock,1000);
+    const cashBudgetInput=document.getElementById('cash-budget');
+    const cashRemainingSpan=document.getElementById('cash-remaining');
+    function updateCashRemaining(){
+        const budget=Number(cashBudgetInput.value)||0;
+        const remaining=budget-monthlyTotal;
+        cashRemainingSpan.textContent=remaining.toLocaleString();
+        if(remaining<0){
+            cashRemainingSpan.style.color='#dc2626';
+            cashRemainingSpan.style.fontWeight='bold';
+        }else{
+            cashRemainingSpan.style.color='#10b981'
+            cashRemainingSpan.style.fontWeight='bold';
+        }
+    }
+    cashBudgetInput.addEventListener('input',updateCashRemaining);
+    calculateBtn.addEventListener('click',updateCashRemaining);
+    resetTotalBtn.addEventListener('click',updateCashRemaining);
 </script>         
 </body>
 </html>
